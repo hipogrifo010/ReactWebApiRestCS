@@ -1,0 +1,52 @@
+import { urlCharacters } from '../endpoints';
+import axios from 'axios';
+import { React, useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
+
+var token = window.localStorage.getItem('userstored');
+const authAxios = axios.create({
+  urlCharacters,
+  headers: { Authorization: `Bearer ${token}` },
+});
+
+function CharacterList() {
+  const [characters, setCharacters] = useState([]);
+
+  useEffect(() => {
+    getCharacters();
+  }, []);
+
+  const getCharacters = async () => {
+    const response = await authAxios.get(urlCharacters);
+    console.log(response.data);
+    setCharacters(response.data);
+  };
+  return (
+    <div>
+      <div>
+        <ul>
+          <Link to={`/search/characters`}>Busqueda</Link>
+        </ul>
+        <ul>
+          {characters.map((ch) => (
+            <div key={uuidv4()}>
+              <Link to={`/characters/${ch.nombre}`}>
+                {ch.nombre}
+                {ch.image}
+              </Link>
+            </div>
+          ))}
+        </ul>
+        <ul>
+          <Link to={`/new/characters`}>Nuevo Personaje</Link>
+        </ul>
+        <ul>
+          <Link to={`/delete/characters`}>Borrar Personajes</Link>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default CharacterList;
