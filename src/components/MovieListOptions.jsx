@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { React, Fragment } from 'react';
 
-function MovieListTest() {
+function MovieListOptions() {
   return (
     <Fragment>
       <div>
@@ -18,4 +18,4 @@ function MovieListTest() {
     </Fragment>
   );
 }
-export default MovieListTest;
+export default MovieListOptions;

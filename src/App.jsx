@@ -19,14 +19,6 @@ import CharacterEdit from './components/CharacterEdit';
 import LoginPost from './components/Auth';
 
 function App() {
-  /*
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    
-    if (loggedUserJSON) {
-      
-    }
-  }, []);*/
   return (
     <div className='App'>
       <header>
