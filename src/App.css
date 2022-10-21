@@ -6,7 +6,8 @@
   height: 40vmin;
   pointer-events: none;
 }
-.MovieResult {
+.MovieCards {
+  color: aliceblue;
   background-image: url('./components/Imgs/Disney.jpg');
 }
 .ImgMovie {
