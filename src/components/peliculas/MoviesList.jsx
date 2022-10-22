@@ -1,14 +1,8 @@
 import { useState, useEffect } from 'react';
 import { urlMovies } from '../endpoints';
-
+import userAuth from '../AuthTokenHandler';
 import axios from 'axios';
-
-var token = window.localStorage.getItem('userstored');
-const authAxios = axios.create({
-  urlMovies,
-  headers: { Authorization: `Bearer ${token}` },
-});
-
+const authAxios = userAuth();
 function useMovieList() {
   const [movies, SetMovies] = useState([]);
 
@@ -17,7 +11,7 @@ function useMovieList() {
   }, []);
 
   const getMovies = async () => {
-    const response = await authAxios.get(urlMovies);
+    const response = await axios.get(urlMovies, { withCredentials: true });
     SetMovies(response.data);
   };
 

@@ -16,7 +16,7 @@ function MovieCards() {
           <ul>{mov.fechaDeCreacion}</ul>
           <img
             style={{ width: 200, height: 300 }}
-            src={require('./Imgs/' + mov.imagen)}
+            src={require('../Imgs/' + mov.imagen)}
             className='ImgMovie'
             alt='imagen'
           />

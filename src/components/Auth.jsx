@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { urlAuth } from '../endpoints';
+import { urlAuth } from './endpoints';
 import axios from 'axios';
 
 function LoginPost() {
@@ -9,14 +9,17 @@ function LoginPost() {
   const insert = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(urlAuth + `/login`, {
-        email,
-        password,
-      });
-      if (response.data.token) {
-        localStorage.setItem('userstored', response.data.token);
-      }
-      console.log(response.data.token);
+      const response = await axios.post(
+        urlAuth + `/login`,
+
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+
+      console.log(response);
     } catch (error) {
       console.log(error.data);
     }
@@ -51,7 +54,9 @@ function LoginPost() {
         </label>
       </form>
 
-      <p>Introduce los valores"(puedes agregar uno o mas a la vez)"</p>
+      <p>
+        Introduce los valores"(puedes agregar uno o mas a la vez , @nova321S)"
+      </p>
       <button onClick={insert}>Crear Nuevo!</button>
     </div>
   );
