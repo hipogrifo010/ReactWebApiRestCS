@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { urlMovies } from '../endpoints';
-import userAuth from '../AuthTokenHandler';
 import axios from 'axios';
-const authAxios = userAuth();
+
 function useMovieList() {
   const [movies, SetMovies] = useState([]);
 

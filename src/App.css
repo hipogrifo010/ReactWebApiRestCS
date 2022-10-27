@@ -6,6 +6,17 @@
   height: 40vmin;
   pointer-events: none;
 }
+.FormMovieEdit {
+  place-content: 'titulo de la peliculaeee';
+}
+.formControl {
+  text-align: right;
+  flex-direction: column;
+  display: grid;
+  justify-content: center;
+  width: 300 px;
+  align-items: right;
+}
 .MovieCards {
   color: aliceblue;
   background-image: url('./components/Imgs/Disney.jpg');

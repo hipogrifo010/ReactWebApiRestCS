@@ -15,7 +15,7 @@ function CharacterByResult() {
   useEffect(() => {
     const currentURL = window.location.search;
     const getCharacters = async () => {
-      console.log(urlSearchCharacters + currentURL);
+      console.log(urlSearchCharacters + currentURL, { withCredentials: true });
       authAxios
         .get(urlSearchCharacters + currentURL)
         .then((res) => SetPersonaje(res.data));

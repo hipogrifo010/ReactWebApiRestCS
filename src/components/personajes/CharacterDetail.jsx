@@ -9,11 +9,13 @@ var token = window.localStorage.getItem('userstored');
 const authAxios = axios.create({
   urlCharacters,
   headers: { Authorization: `Bearer ${token}` },
+  withCredentials: true,
 });
 
 const authAxiosImg = axios.create({
   urlGetImageCharacters,
   headers: { Authorization: `Bearer ${token}` },
+  withCredentials: true,
 });
 
 function CharacterByname() {

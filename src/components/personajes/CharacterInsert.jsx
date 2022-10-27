@@ -2,12 +2,6 @@ import { React, useState } from 'react';
 import { urlNewCharacters } from '../endpoints';
 import axios from 'axios';
 
-var token = window.localStorage.getItem('userstored');
-const authAxios = axios.create({
-  urlNewCharacters,
-  headers: { Authorization: `Bearer ${token}` },
-});
-
 function CharacterPost() {
   const [nombre, setNombre] = useState('');
   const [imagen, setImagen] = useState('');
@@ -19,15 +13,19 @@ function CharacterPost() {
   const insert = async (e) => {
     e.preventDefault();
     try {
-      const response = await authAxios.post(urlNewCharacters, {
-        characterId: 0,
-        nombre,
-        imagen,
-        edad,
-        peso,
-        historia,
-        movieId,
-      });
+      const response = await axios.post(
+        urlNewCharacters,
+        {
+          characterId: 0,
+          nombre,
+          imagen,
+          edad,
+          peso,
+          historia,
+          movieId,
+        },
+        { withCredentials: true }
+      );
       console.log(response.data);
     } catch (error) {
       console.log(error.data);

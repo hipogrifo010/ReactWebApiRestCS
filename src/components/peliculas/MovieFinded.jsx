@@ -4,12 +4,6 @@ import { React, useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 
-var token = window.localStorage.getItem('userstored');
-const authAxios = axios.create({
-  urlSearchMovies,
-  headers: { Authorization: `Bearer ${token}` },
-});
-
 function MoviesByResult() {
   const [pelicula, SetPersonaje] = useState([]);
 
@@ -17,8 +11,8 @@ function MoviesByResult() {
     const currentURL = window.location.search;
     const getMovies = async () => {
       console.log(urlSearchMovies + currentURL);
-      authAxios
-        .get(urlSearchMovies + currentURL)
+      axios
+        .get(urlSearchMovies + currentURL, { withCredentials: true })
         .then((res) => SetPersonaje(res.data));
     };
     getMovies();
@@ -30,7 +24,7 @@ function MoviesByResult() {
       <ul type='Personaje'>
         <li>
           {pelicula.map((per) => (
-            <div key={uuidv4}>
+            <div key={uuidv4()}>
               Titulo : {per.titulo}
               Genero : {per.genreId}
             </div>

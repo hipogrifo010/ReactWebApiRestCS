@@ -1,13 +1,6 @@
 import { React, useState } from 'react';
 import { urlNewMovies } from '../endpoints';
-
 import axios from 'axios';
-
-var token = window.localStorage.getItem('userstored');
-const authAxios = axios.create({
-  urlNewMovies,
-  headers: { Authorization: `Bearer ${token}` },
-});
 
 function MoviePost() {
   const [titulo, setTitulo] = useState(['']);
@@ -29,7 +22,9 @@ function MoviePost() {
       genreId,
     };
     try {
-      const response = await authAxios.post(urlNewMovies, payload);
+      const response = await axios.post(urlNewMovies, payload, {
+        withCredentials: true,
+      });
       console.log(response);
     } catch (error) {
       console.log(error);

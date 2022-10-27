@@ -4,12 +4,6 @@ import { React, useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 
-var token = window.localStorage.getItem('userstored');
-const authAxios = axios.create({
-  urlCharacters,
-  headers: { Authorization: `Bearer ${token}` },
-});
-
 function CharacterList() {
   const [characters, setCharacters] = useState([]);
 
@@ -18,7 +12,7 @@ function CharacterList() {
   }, []);
 
   const getCharacters = async () => {
-    const response = await authAxios.get(urlCharacters);
+    const response = await axios.get(urlCharacters, { withCredentials: true });
     console.log(response.data);
     setCharacters(response.data);
   };

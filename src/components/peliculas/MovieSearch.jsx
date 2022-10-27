@@ -1,5 +1,4 @@
 import { React, useState } from 'react';
-
 import { createSearchParams, useNavigate } from 'react-router-dom';
 
 function MovieBySearch() {
@@ -28,6 +27,7 @@ function MovieBySearch() {
 
   return (
     <div>
+      
       <form onSubmit={register} className='Form'>
         <label>
           Titulo :

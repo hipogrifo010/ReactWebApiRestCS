@@ -5,7 +5,7 @@ import Home from './components/Home';
 import CharacterList from './components/personajes/CharactersList';
 import CharacterByname from './components/personajes/CharacterDetail';
 import MovieHandled from './components/peliculas/MovieHandler';
-import MovieByname from './components/peliculas/MovieDetail';
+import MovieDetailHandled from './components/peliculas/MovieDetailHandler';
 import CharacterBySearch from './components/personajes/CharacterSearch';
 import CharacterByResult from './components/personajes/CharacterFinded';
 import MovieBySearch from './components/peliculas/MovieSearch';
@@ -37,7 +37,7 @@ function App() {
         <Route path='/delete/characters' element={<DeleteCharacters />} />
         <Route path='/auth/login' element={<LoginPost />} />
         <Route path='/movies' element={<MovieHandled />} />
-        <Route path='/movies/:title' element={<MovieByname />} />
+        <Route path='/movies/:title' element={<MovieDetailHandled />} />
         <Route path='/search/movies' element={<MovieBySearch />} />
         <Route path='/searchresult/movies' element={<MoviesByResult />} />
         <Route path='/new/movies' element={<MoviePost />} />

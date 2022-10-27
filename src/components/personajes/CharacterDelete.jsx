@@ -3,17 +3,13 @@ import { urlDeleteCharacters } from '../endpoints';
 
 import axios from 'axios';
 
-var token = window.localStorage.getItem('userstored');
-const authAxios = axios.create({
-  urlDeleteCharacters,
-  headers: { Authorization: `Bearer ${token}` },
-});
-
 function DeleteCharacters() {
   const [id, setId] = useState([]);
 
   const deletecharacter = async () => {
-    const response = await authAxios.delete(urlDeleteCharacters + `/${id}`);
+    const response = await axios.delete(urlDeleteCharacters + `/${id}`, {
+      withCredentials: true,
+    });
     console.log(response.data);
   };
 

@@ -21,15 +21,19 @@ function CharacterPost() {
   const insert = async (e) => {
     e.preventDefault();
     try {
-      const response = await authAxios.put(urlEditCharacters + `/${id}`, {
-        characterId,
-        nombre,
-        imagen,
-        edad,
-        peso,
-        historia,
-        movieId,
-      });
+      const response = await authAxios.put(
+        urlEditCharacters + `/${id}`,
+        {
+          characterId,
+          nombre,
+          imagen,
+          edad,
+          peso,
+          historia,
+          movieId,
+        },
+        { withCredentials: true }
+      );
       console.log(response.data);
     } catch (error) {
       console.log(error.data);
